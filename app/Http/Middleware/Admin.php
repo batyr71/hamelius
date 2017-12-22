@@ -2,9 +2,9 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Support\Facades\Auth;
-
+use Auth;
 use Closure;
+
 class Admin
 {
     /**
@@ -16,12 +16,15 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->isadmin == 1){
-            return $next($request);
-        } elseif(Auth::check()){
-            return redirect('/userboard');
+        if(Auth::check()){
+            if(Auth::user()->isadmin){
+                return $next($request);
+            } else {
+                return redirect('/userboard');
+            }
         } else {
-            return redirect('/');            
+            return redirect('/login');
         }
     }
 }
+//

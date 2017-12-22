@@ -2,11 +2,16 @@
 
 @section('content')
 <div class="container">
-  <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+  <div class="row justify-content-center">
+    <div class="col-4 offset-2 mb-2">
       <h2>Справочник Мебели:</h2>
-      <a href="{{route('mebel.create')}}" class="btn btn-primary">Добавить Мебель</a>
-
+		</div>
+    <div class="col-4 offset-2 mb-2">
+      <a href="{{'/mebel/create'}}" class="btn btn-primary">Добавить Мебель</a>
+		</div>
+	</div>
+	<div class="row justify-content-center">
+	<div class="col-8 ">
       <table class="table">
 					<thead>
 						<tr>
@@ -19,7 +24,7 @@
 						<tr>
 							<th scope="row">{{$mebel->id}}</th>
 							<td>{{$mebel->name}}</td>
-							<td><a href="/mebel/{{$mebel->id}}/edit" class="btn btn-default">Изменить</a></td>
+							<td><a href="/mebel/{{$mebel->id}}/edit" class="btn btn-secondary">Изменить</a></td>
 						</tr>
 						@endforeach
 					</tbody>

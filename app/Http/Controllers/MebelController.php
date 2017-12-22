@@ -13,19 +13,20 @@ class MebelController extends Controller
         $this->middleware('admin');
     }
 
+    //Выводит список мебели
     public function index()
     {
         $mebel = Mebel::all();        
         return view('admin.mebel')->with('mebel', $mebel);        
     }
 
-
+    //страница добавление мебели
     public function create()
     {
         return view('admin.createmebel');                
     }
 
-
+    //Добавление мебели в БД
     public function store(Request $request)
     {
         $mebel = new Mebel;
@@ -34,19 +35,13 @@ class MebelController extends Controller
         return redirect('/mebel');
     }
 
-
-    public function show(Mebel $mebel)
-    {
-        //
-    }
-
-
+    //Страница редактирование мебели
     public function edit(Mebel $mebel)
     {
         return view('admin.editmebel')->with('mebel', $mebel);
     }
 
-
+    //Изменение мебели в БД
     public function update(Request $request, Mebel $mebel)
     {
         $mebel->name = $request['mebel_name'];
@@ -54,9 +49,4 @@ class MebelController extends Controller
         return redirect('/mebel');	
     }
 
-
-    public function destroy(Mebel $mebel)
-    {
-        //
-    }
 }

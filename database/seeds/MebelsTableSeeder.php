@@ -12,13 +12,13 @@ class MebelsTableSeeder extends Seeder
     public function run()
     {
         DB::table('mebels')->insert([
-            'name' => "полка",
+            'name' => "Полка",
         ]);
         DB::table('mebels')->insert([
-            'name' => "шкаф",
+            'name' => "Шкаф",
         ]);
         DB::table('mebels')->insert([
-            'name' => "коробка",
+            'name' => "Коробка",
         ]);
     }
 }

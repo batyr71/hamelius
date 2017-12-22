@@ -3,30 +3,38 @@
 @section('content')
 <div class="container">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-8 offset-2">
       <h2>Редактирование Мебели:</h2>
-      
-      <form action="{{route('mebel.update', $mebel)}}"  method="POST">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 offset-2">    
+      <form action="{{route('mebelupdate', $mebel)}}"  method="POST">
         {{ csrf_field() }}
         <input type="hidden" name="_method" value="PUT">
-        <div class="form-group">
-          <h3>Номер</h3>
-          <h4>#{{$mebel->id}}</h4>
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-addon col-2" id="basic-addon1">Номер:</span>
+            <input type="text" class="form-control col-8"  aria-describedby="basic-addon1" value="#{{$mebel->id}}" readonly>
+          </div>
         </div>
         
-        <div class="form-group">
-          <h3>Название</h3>
-          <h4>{{$mebel->name}}</h4>
+        <div class="row">
+          <div class="input-group  mb-3">
+            <span  class="input-group-addon col-2" id="basic-addon1">Наименование:</span>
+            <input  type="text" class="form-control col-8" aria-describedby="basic-addon1" value="{{$mebel->name}}" readonly>
+          </div>
         </div>
-
-        <div class="form-group">
-         <label for="mebel_name"><h3>Новое Название</h3></label>
-          <input name="mebel_name" type="text" class="form-control" value="{{$mebel->name}}" aria-label="mebel_name" aria-describedby="mebel_name">
+         
+        <div class="row">
+          <div class="input-group mb-3">
+            <span class="input-group-addon col-2" id="basic-addon1">Новое Название:</span>
+            <input name="mebel_name" type="text" class="form-control col-8" value="{{$mebel->name}}" aria-label="mebel_name" aria-describedby="mebel_name">
+          </div>
         </div>
-
-
         
-        <button type="submit" class="btn btn-primary">Подтвердить</button>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
 
       </form>
     </div>
